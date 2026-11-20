@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Recicla Fácil</string>
+
+    <!-- Tela 1: agendamento -->
+    <string name="subtitulo">Agende a coleta de recicláveis na sua casa</string>
+    <string name="desc_lixeiras">Lixeiras da coleta seletiva</string>
+    <string name="hint_endereco">Digite seu endereço</string>
+    <string name="titulo_materiais">Materiais para coleta:</string>
+    <string name="papel">Papel</string>
+    <string name="plastico">Plástico</string>
+    <string name="vidro">Vidro</string>
+    <string name="metal">Metal</string>
+    <string name="titulo_periodo">Período da coleta:</string>
+    <string name="manha">Manhã (8h às 12h)</string>
+    <string name="tarde">Tarde (13h às 17h)</string>
+    <string name="noite">Noite (18h às 21h)</string>
+    <string name="btn_agendar">Agendar coleta</string>
+    <string name="hint_txt_endereco">Endereço</string>
+    <string name="hint_txt_materiais">Materiais</string>
+    <string name="hint_txt_periodo">Período</string>
+    <string name="btn_resumo">Ver resumo</string>
+    <string name="autores">Aurelio Almeida e Paulo Mazuque</string>
+
+    <!-- Resultados mostrados ao tocar em Agendar coleta -->
+    <string name="erro_endereco">Digite o endereço da coleta</string>
+    <string name="endereco_nao_informado">Endereço não informado</string>
+    <string name="resultado_endereco">Endereço: %1$s</string>
+    <string name="nenhum_material">Nenhum material selecionado</string>
+    <string name="resultado_materiais">Materiais: %1$s</string>
+    <string name="nenhum_periodo">Nenhum período selecionado</string>
+    <string name="resultado_periodo">Período: %1$s</string>
+
+    <!-- Tela 2: resumo -->
+    <string name="desc_confirmado">Coleta confirmada</string>
+    <string name="titulo_resumo">Coleta agendada!</string>
+    <string name="subtitulo_resumo">Confira os dados do seu agendamento:</string>
+    <string name="dica">Dica: deixe os materiais limpos, secos e separados por tipo na frente de casa no período escolhido.</string>
+    <string name="btn_voltar">Voltar</string>
+</resources>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/verde"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtSubtitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/subtitulo"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgLixeiras"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_lixeiras"
+            android:scaleType="fitCenter"
+            android:src="@drawable/lixeiras" />
+
+        <EditText
+            android:id="@+id/edtEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints="postalAddress"
+            android:hint="@string/hint_endereco"
+            android:inputType="textPostalAddress"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/titulo_materiais"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/cbPapel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/papel" />
+
+        <CheckBox
+            android:id="@+id/cbPlastico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plastico" />
+
+        <CheckBox
+            android:id="@+id/cbVidro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vidro" />
+
+        <CheckBox
+            android:id="@+id/cbMetal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/metal" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/titulo_periodo"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgPeriodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbManha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/manha" />
+
+            <RadioButton
+                android:id="@+id/rbTarde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tarde" />
+
+            <RadioButton
+                android:id="@+id/rbNoite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/noite" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnAgendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/btn_agendar"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/hint_txt_endereco"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtMateriais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_txt_materiais"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtPeriodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_txt_periodo"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnResumo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:text="@string/btn_resumo"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtAutores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="end"
+            android:text="@string/autores"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</ScrollView>
