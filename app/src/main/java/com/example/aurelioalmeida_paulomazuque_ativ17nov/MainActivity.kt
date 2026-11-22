@@ -2,7 +2,7 @@ package com.example.aurelioalmeida_paulomazuque_ativ17nov
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.RadioButton
+import android.widget.CheckBox
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,12 +14,17 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    // Lista das CheckBox de materiais, usada em mais de um lugar
+    private val caixas: List<CheckBox> by lazy {
+        listOf(binding.cbPapel, binding.cbPlastico, binding.cbVidro, binding.cbMetal)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -40,11 +45,30 @@ class MainActivity : AppCompatActivity() {
 
         // Se mudar alguma escolha depois de agendar, precisa agendar de novo
         binding.edtEndereco.doAfterTextChanged { binding.btnResumo.isEnabled = false }
-        val caixa = listOf(binding.cbPapel, binding.cbPlastico, binding.cbVidro, binding.cbMetal)
-        for (cb in caixa) {
+        for (cb in caixas) {
             cb.setOnCheckedChangeListener { _, _ -> binding.btnResumo.isEnabled = false }
         }
         binding.rgPeriodo.setOnCheckedChangeListener { _, _ -> binding.btnResumo.isEnabled = false }
+    }
+
+    // Ao girar a tela (ou trocar o tema) a Activity é recriada. Os campos de entrada
+    // se salvam sozinhos, mas os TextViews de resultado e o botão "Ver resumo" não.
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putCharSequence(ESTADO_ENDERECO, binding.txtEndereco.text)
+        outState.putCharSequence(ESTADO_MATERIAIS, binding.txtMateriais.text)
+        outState.putCharSequence(ESTADO_PERIODO, binding.txtPeriodo.text)
+        outState.putBoolean(ESTADO_RESUMO_LIBERADO, binding.btnResumo.isEnabled)
+    }
+
+    // Restaurado aqui (e não no onCreate) porque o super devolve os campos de entrada,
+    // o que dispara os listeners acima e desativaria o botão "Ver resumo".
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        binding.txtEndereco.text = savedInstanceState.getCharSequence(ESTADO_ENDERECO)
+        binding.txtMateriais.text = savedInstanceState.getCharSequence(ESTADO_MATERIAIS)
+        binding.txtPeriodo.text = savedInstanceState.getCharSequence(ESTADO_PERIODO)
+        binding.btnResumo.isEnabled = savedInstanceState.getBoolean(ESTADO_RESUMO_LIBERADO)
     }
 
     private fun verificaEndereco(): Boolean {
@@ -59,9 +83,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun verificaCheckBox(): Boolean {
-        val caixa = listOf(binding.cbPapel, binding.cbPlastico, binding.cbVidro, binding.cbMetal)
-
-        val elementos = caixa.filter { it.isChecked }
+        val elementos = caixas.filter { it.isChecked }
             .map { it.text.toString() }
 
         if (elementos.isEmpty()) {
@@ -73,10 +95,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun verificaRadioButton(): Boolean {
-        val idSelecionado = binding.rgPeriodo.checkedRadioButtonId
-        if (idSelecionado != -1) {
-            val radioButton = findViewById<RadioButton>(idSelecionado)
-            binding.txtPeriodo.text = getString(R.string.resultado_periodo, radioButton.text.toString())
+        val selecionado = listOf(binding.rbManha, binding.rbTarde, binding.rbNoite)
+            .firstOrNull { it.isChecked }
+        if (selecionado != null) {
+            binding.txtPeriodo.text = getString(R.string.resultado_periodo, selecionado.text.toString())
             return true
         } else {
             binding.txtPeriodo.text = getString(R.string.nenhum_periodo)
@@ -87,9 +109,16 @@ class MainActivity : AppCompatActivity() {
     // Passa os valores dos TextViews para a segunda tela
     private fun abrirResumo() {
         val intent = Intent(this, ResumoActivity::class.java)
-        intent.putExtra("endereco", binding.txtEndereco.text.toString())
-        intent.putExtra("materiais", binding.txtMateriais.text.toString())
-        intent.putExtra("periodo", binding.txtPeriodo.text.toString())
+        intent.putExtra(ResumoActivity.EXTRA_ENDERECO, binding.txtEndereco.text.toString())
+        intent.putExtra(ResumoActivity.EXTRA_MATERIAIS, binding.txtMateriais.text.toString())
+        intent.putExtra(ResumoActivity.EXTRA_PERIODO, binding.txtPeriodo.text.toString())
         startActivity(intent)
+    }
+
+    companion object {
+        private const val ESTADO_ENDERECO = "estado_endereco"
+        private const val ESTADO_MATERIAIS = "estado_materiais"
+        private const val ESTADO_PERIODO = "estado_periodo"
+        private const val ESTADO_RESUMO_LIBERADO = "estado_resumo_liberado"
     }
 }

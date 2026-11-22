@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Modo escuro: verde mais claro para ter contraste com o fundo escuro -->
+    <color name="verde">#FF81C784</color>
+    <color name="on_verde">#FF0B2E0F</color>
+    <!-- Card de resumo: fundo verde escuro com texto claro -->
+    <color name="verde_claro">#FF1E3A21</color>
+    <color name="verde_escuro">#FFC8E6C9</color>
+</resources>

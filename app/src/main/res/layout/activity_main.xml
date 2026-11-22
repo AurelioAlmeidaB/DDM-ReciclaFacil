@@ -51,7 +51,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txtTituloMateriais"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -84,7 +84,7 @@
             android:text="@string/metal" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txtTituloPeriodo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

@@ -1,8 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.aurelioAlmeida_pauloMazuque_Ativ17Nov" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Verde da reciclagem nos botões, CheckBox e RadioButton -->
-        <item name="colorPrimary">@color/verde</item>
-        <item name="colorOnPrimary">@color/white</item>
-    </style>
-</resources>

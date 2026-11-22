@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
+    <!-- Verde principal: títulos, botões, CheckBox e RadioButton -->
     <color name="verde">#FF2E7D32</color>
+    <!-- Cor do texto/ícone em cima do verde principal -->
+    <color name="on_verde">#FFFFFFFF</color>
+    <!-- Fundo e texto do card de resumo -->
     <color name="verde_claro">#FFE8F5E9</color>
     <color name="verde_escuro">#FF1B5E20</color>
 </resources>
